@@ -1,8 +1,8 @@
-import { observable } from "mobx";
+import { computed, observable } from "mobx";
 import { LocalStorageService } from "../services/LocalStorageService";
 import { singletonGetter } from "../util/singletonGetter";
 
-interface Game {
+export interface IGame {
     guesses: string[];
     evaluation: string[][];
     status: string;
@@ -22,14 +22,15 @@ export class GamesStore {
     private games;
 
     constructor() {
-        this.games = LocalStorageService.getItem<Game[]>("games") ?? [];
+        this.games = LocalStorageService.getItem<IGame[]>("games") ?? [];
         if(!this.games.length) {
             this.games = [GamesStore.newGame()];
             LocalStorageService.setItem("games", this.games);
         }
     }
 
-    get currentGame() :Game {
+    @computed
+    get currentGame() :IGame {
         return this.games[this.games.length - 1];
     }
 }

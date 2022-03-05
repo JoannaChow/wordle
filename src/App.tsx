@@ -1,9 +1,10 @@
+import { GamesStore } from "./stores/GamesStore";
 import { Game } from "./views/Game/Game";
 
 function App() {
   return (
     <div>
-      <Game />
+      <Game game={GamesStore.get().currentGame}/>
     </div>
   );
 }

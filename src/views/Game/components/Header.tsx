@@ -4,9 +4,6 @@ import React from "react";
 @observer
 export class Header extends React.Component {
     render() {
-        return (
-            <>
-            </>
-        );
+        return null;
     }
 }
