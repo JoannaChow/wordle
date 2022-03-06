@@ -1,10 +1,10 @@
 export const ROWS = 6;
 export const COLS = 5;
 
-export const KEYBOARD_KEYS = [
+export const KEYBOARD_KEYS: Key[][] = [
     ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
     ["A", "S", "D", "F", "G", "H", "J", "K", "L"],
-    ["Enter", "Z", "X", "C", "V", "B", "N", "M", "Backspace"]
+    ["ENTER", "Z", "X", "C", "V", "B", "N", "M", "BACKSPACE"]
 ];
 
 const KEYS = [
@@ -39,3 +39,8 @@ const KEYS = [
 ] as const;
 
 export type Key = typeof KEYS[number];
+
+export const Color = {
+    colorBg: "#D3D6DA",
+    keyTextColor: "#000000",
+};

@@ -11,9 +11,9 @@ export class Grid extends React.Component<IProps> {
         return (
             <>
                 {this.props.tiles.map((row, rowIdx) => (
-                    <div>
+                    <div key={rowIdx}>
                         {row.map((tile, colIdx) => (
-                            <span>
+                            <span key={colIdx}>
                                 {rowIdx}-{colIdx}
                             </span>
                         ))}
