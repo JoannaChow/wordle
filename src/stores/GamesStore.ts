@@ -1,11 +1,12 @@
 import { computed, observable } from "mobx";
+import { Evaluation, Status } from "../consts";
 import { LocalStorageService } from "../services/LocalStorageService";
 import { singletonGetter } from "../util/singletonGetter";
 
 export interface IGame {
     guesses: string[];
-    evaluation: string[][];
-    status: string;
+    evaluation: Evaluation[][];
+    status: Status;
     solution: string;
 }
 
@@ -14,7 +15,7 @@ export class GamesStore {
     static newGame = () => ({
         guesses: [],
         evaluation: [],
-        status: "IN_PROGRESS",
+        status: Status.IN_PROGRESS,
         solution: "hello",
     });
 
