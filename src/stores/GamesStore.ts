@@ -1,5 +1,6 @@
 import { computed, observable } from "mobx";
 import { Evaluation, Status } from "../consts";
+import { DictionaryService } from "../services/DictionaryService";
 import { LocalStorageService } from "../services/LocalStorageService";
 import { singletonGetter } from "../util/singletonGetter";
 
@@ -16,7 +17,7 @@ export class GamesStore {
         guesses: [],
         evaluation: [],
         status: Status.IN_PROGRESS,
-        solution: "hello",
+        solution: DictionaryService.get().getNewWord(),
     });
 
     @observable

@@ -8,6 +8,7 @@ import { action, computed, observable } from "mobx";
 import { ROWS, COLS, Key, Evaluation, Status } from "../../consts";
 import { evaluateWord } from "../../util/evaluateWord";
 import { round } from "lodash";
+import { DictionaryService } from "../../services/DictionaryService";
 
 interface IProps {
   game: IGame;
@@ -64,7 +65,9 @@ export class Game extends React.Component<IProps> {
       return;
     }
 
-    // TODO: is a valid word
+    if (!DictionaryService.get().isValidWord(this.currentInput)) {
+      return;
+    }
 
     if (game.guesses.length >= ROWS) {
       return;
