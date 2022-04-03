@@ -7,6 +7,7 @@ describe("DictionaryService", () => {
 
   it("it can verify a word", () => {
     expect(DictionaryService.get().isValidWord("hello")).toBe(true);
+    expect(DictionaryService.get().isValidWord("HELLO")).toBe(true);
     expect(DictionaryService.get().isValidWord("asdfs")).toBe(false);
   });
 });
