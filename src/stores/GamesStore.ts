@@ -25,14 +25,15 @@ export class GamesStore {
 
     constructor() {
         this.games = LocalStorageService.getItem<IGame[]>("games") ?? [];
-        if(!this.games.length) {
+        if (!this.games.length) {
             this.games = [GamesStore.newGame()];
             LocalStorageService.setItem("games", this.games);
         }
+        console.log(`solution: ${this.games[0].solution}`);
     }
 
     @computed
-    get currentGame() :IGame {
+    get currentGame(): IGame {
         return this.games[this.games.length - 1];
     }
 }

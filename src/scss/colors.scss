@@ -1,0 +1,36 @@
+:root{
+    --keyBg: #D3D6DA;
+    --keyBgCorrect: #6aaa64;
+    --keyBgPresent: #c9b458;
+    --keyBgAbsent: #787c7e;
+    --keyTextColor: #000000;
+    --keyEvaluatedColor: #ffffff;
+}
+
+.keyAbsent {
+    background-color: var(--keyBgAbsent);
+    color: var(--keyEvaluatedColor);
+}
+
+.keyPresent {
+    background-color: var(--keyBgPresent);
+    color: var(--keyEvaluatedColor);
+}
+
+.keyCorrect {
+    background-color: var(--keyBgCorrect);
+    color: var(--keyEvaluatedColor);
+}
+
+.keyModule {
+    background-color: var(--keyBg);
+    color: var(--keyTextColor);
+}
+
+.keyENTER {
+    font-size:  12px !important;
+}
+
+.keyBACKSPACE {
+    font-size:  12px !important;
+}
