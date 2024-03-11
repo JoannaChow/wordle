@@ -1,4 +1,4 @@
-import { flatten } from "lodash";
+import { flatten, startsWith } from "lodash";
 import { observer } from "mobx-react";
 import React from "react";
 import styled from "styled-components";
@@ -35,23 +35,10 @@ export class Keyboard extends React.Component<IProps> {
                             <KeyBtn
                                 key={colIndex}
                                 onClick={() => onKey(keyName)}
-                                className={`${
-                                    guessedLetters.get(keyName) ===
-                                    Evaluation.ABSENT
-                                        ? "keyAbsent"
-                                        : guessedLetters.get(keyName) ===
-                                          Evaluation.PRESENT
-                                        ? "keyPresent"
-                                        : guessedLetters.get(keyName) ===
-                                          Evaluation.CORRECT
-                                        ? "keyCorrect"
-                                        : "keyModule"
-                                } ${
-                                    keyName === "ENTER" ||
-                                    keyName === "BACKSPACE"
-                                        ? `key${keyName}`
-                                        : ""
-                                }`}
+                                className={keyBtnClassName(
+                                    keyName,
+                                    guessedLetters
+                                )}
                             >
                                 {keyName}
                             </KeyBtn>
@@ -62,6 +49,32 @@ export class Keyboard extends React.Component<IProps> {
         );
     }
 }
+
+const keyBtnClassName = (
+    keyName: (typeof KEYBOARD_KEYS)[0][0],
+    guessedLetters: Map<string, Evaluation>
+) => {
+    let className = ``;
+    switch (guessedLetters.get(keyName)) {
+        case Evaluation.ABSENT:
+            className += "keyAbsent";
+            break;
+        case Evaluation.PRESENT:
+            className += "keyPresent";
+            break;
+        case Evaluation.CORRECT:
+            className += "keyCorrect";
+            break;
+        default:
+            className += "keyModule";
+            break;
+    }
+    const specialKeys = ["ENTER", "BACKSPACE"];
+    if (specialKeys.indexOf(keyName) !== -1) {
+        className += ` key${keyName}`;
+    }
+    return className;
+};
 
 const Row = styled.div`
     display: flex;

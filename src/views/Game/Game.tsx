@@ -82,7 +82,8 @@ export class Game extends React.Component<IProps> {
             if (
                 !existingEval ||
                 (existingEval === Evaluation.PRESENT &&
-                    newEval === Evaluation.CORRECT)
+                    newEval === Evaluation.CORRECT) ||
+                existingEval === Evaluation.CORRECT
             ) {
                 this.guessedLetters.set(letter, newEval);
             }
